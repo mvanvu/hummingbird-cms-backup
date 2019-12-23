@@ -6,9 +6,9 @@ return [
 	'title'       => 'backup-plugin-title',
 	'description' => 'backup-plugin-desc',
 	'version'     => '1.0.0',
-	'author'      => 'Mai vu',
-	'authorEmail' => 'rainy@joomtech.net',
-	'authorUrl'   => 'https://www.joomtech.net',
+	'author'      => 'Mai Vu',
+	'authorEmail' => 'mvanvu@gmail.com',
+	'authorUrl'   => 'https://github.com/mvanvu',
 	'updateUrl'   => null,
 	'params'      => [
 		[
