@@ -2,7 +2,7 @@
 
 return [
 	'name'        => 'Backup',
-	'group'       => 'System',
+	'group'       => 'Cms',
 	'title'       => 'backup-plugin-title',
 	'description' => 'backup-plugin-desc',
 	'version'     => '1.0.0',
@@ -10,11 +10,4 @@ return [
 	'authorEmail' => 'mvanvu@gmail.com',
 	'authorUrl'   => 'https://github.com/mvanvu',
 	'updateUrl'   => null,
-	'params'      => [
-		[
-			'name'  => 'backup',
-			'type'  => 'CmsBackup',
-			'label' => 'backup-manage',
-		],
-	],
 ];

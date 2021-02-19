@@ -1,0 +1,16 @@
+{
+  "name": "Backup",
+  "group": "Cms",
+  "author": "Mai Vu",
+  "authorUrl": "https://github.com/mvanvu",
+  "title": {
+    "en-GB": "Backup (Official)",
+    "vi-VN": "Sao lưu hệ thống (Chính hãng)"
+  },
+  "description": {
+    "en-GB": "Backup system data to a package installer",
+    "vi-VN": "Tạo bản sao lưu dữ liệu của toàn trang web vào một gói cài đặt dùng trong trường hợp cần khôi phục lại trang web"
+  },
+  "version": "1.0",
+  "source": "https://github.com/mvanvu/hummingbird-cms-backup/archive/1.0.zip"
+}
