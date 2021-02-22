@@ -16,7 +16,7 @@ class Restore extends QueueAbstract
 		set_time_limit(0);
 		ini_set('memory_limit', -1);
 		$console       = Console::getInstance();
-		$file          = PLUGIN_PATH . '/Cms/Backup/archived/' . trim($this->data['backupFile'], './\\');
+		$file          = PLUGIN_PATH . '/Cms/Backup/archived/' . trim($this->data['backupFile'], './\\\\');
 		$restoreTmpDir = TMP_PATH . '/backup-' . time();
 		$zip           = new ZipArchive;
 		$console->out('Start to extract the backup file...');
