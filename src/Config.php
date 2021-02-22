@@ -5,7 +5,7 @@ return [
 	'group'       => 'Cms',
 	'title'       => 'backup-plugin-title',
 	'description' => 'backup-plugin-desc',
-	'version'     => '1.0.0',
+	'version'     => '1.0',
 	'author'      => 'Mai Vu',
 	'authorEmail' => 'mvanvu@gmail.com',
 	'authorUrl'   => 'https://github.com/mvanvu',
