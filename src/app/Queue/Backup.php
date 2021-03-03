@@ -89,17 +89,20 @@ class Backup extends QueueAbstract
 			BASE_PATH,
 			true,
 			function ($file) use ($zip) {
-				$zip->addFile($file, preg_replace('#^' . preg_quote(BASE_PATH, '#') . '/#', '', $file));
+				if ($file !== BASE_PATH . '/config.php'
+					&& 0 !== strpos($file, BASE_PATH . '/app/Plugin/Cms/Backup/archived')
+					&& 0 !== strpos($file, BASE_PATH . '/cache')
+					&& 0 !== strpos($file, BASE_PATH . '/tmp')
+				)
+				{
+					$zip->addFile($file, preg_replace('#^' . preg_quote(BASE_PATH, '#') . '/#', '', $file));
+				}
 			}
 		);
 
 		$console->out('Collect system files completed.');
 		$console->out('Start compress system files...');
 		$zip->addFromString('install.sql', implode(PHP_EOL, $data));
-		$zip->deleteName('app/Plugin/Cms/Backup/archived/');
-		$zip->deleteName('cache/');
-		$zip->deleteName('tmp/');
-		$zip->deleteName('config.php');
 		$zip->close();
 		$console->out('Backup completed.');
 
