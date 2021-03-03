@@ -2,7 +2,7 @@
 
 namespace App\Mvc\Controller;
 
-use App\Helper\Event;
+use App\Helper\Assets;
 use App\Helper\FileSystem;
 use App\Helper\Queue;
 use App\Helper\Text;
@@ -33,8 +33,7 @@ class AdminBackupController extends ControllerBase
 
 	public function indexAction()
 	{
-		$this->adminBase();
-		Event::getHandler(Event::getPlugin('Cms', 'Backup'))->addAssets('js/backup.js');
+		Assets::addFromPlugin('js/backup.js', 'Cms', 'Backup');
 		$backupDir   = PLUGIN_PATH . '/Cms/Backup/archived';
 		$backupFiles = [];
 
