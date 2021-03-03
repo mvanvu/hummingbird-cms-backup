@@ -74,7 +74,6 @@ class Backup extends QueueAbstract
 			mkdir($dir, 0755);
 		}
 
-
 		$zipFile = $dir . '/Backup-' . Date::now('UTC')->toDisplay('Y-m-d_H:i:s') . '.zip';
 		$zip     = new ZipArchive;
 
@@ -98,6 +97,8 @@ class Backup extends QueueAbstract
 		$console->out('Start compress system files...');
 		$zip->addFromString('install.sql', implode(PHP_EOL, $data));
 		$zip->deleteName('app/Plugin/Cms/Backup/archived/');
+		$zip->deleteName('cache/');
+		$zip->deleteName('tmp/');
 		$zip->deleteName('config.php');
 		$zip->close();
 		$console->out('Backup completed.');
