@@ -2,6 +2,7 @@
 
 namespace App\Plugin\Cms;
 
+use App\Helper\AdminMenu;
 use App\Helper\IconSvg;
 use App\Helper\Text;
 use App\Helper\Uri;
@@ -10,14 +11,17 @@ use App\Plugin\Plugin;
 
 class Backup extends Plugin
 {
-	public function onRegisterAdminMenus(&$menus)
+	public function onRegisterAdminMenus(AdminMenu $adminMenu)
 	{
 		if (User::is('super'))
 		{
-			$menus['system']['items'][] = [
-				'title' => IconSvg::render('database') . ' ' . Text::_('backup-system'),
-				'url'   => Uri::route('backup/index'),
-			];
+			$adminMenu->addItem(
+				'system',
+				[
+					'title' => IconSvg::render('database') . ' ' . Text::_('backup-system'),
+					'url'   => Uri::route('backup/index'),
+				]
+			);
 		}
 	}
 }
