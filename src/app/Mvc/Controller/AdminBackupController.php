@@ -4,8 +4,8 @@ namespace App\Mvc\Controller;
 
 use App\Helper\Assets;
 use App\Helper\FileSystem;
-use App\Helper\Queue;
 use App\Helper\Text;
+use App\Plugin\Cms\Backup as BackupHandler;
 use App\Queue\Backup;
 use App\Queue\Restore;
 use App\Traits\Permission;
@@ -18,14 +18,14 @@ class AdminBackupController extends ControllerBase
 
 	public function backupAction()
 	{
-		return $this->response->setJsonContent(Queue::add(Backup::class, ['fromPlugin' => 'Cms/Backup']));
+		return $this->response->setJsonContent(BackupHandler::addQueue(Backup::class));
 	}
 
 	public function restoreAction()
 	{
 		if ($this->request->isPost() && $backupFile = $this->request->getPost('backupFile'))
 		{
-			return $this->response->setJsonContent(Queue::add(Restore::class, ['backupFile' => $backupFile, 'fromPlugin' => 'Cms/Backup']));
+			return $this->response->setJsonContent(BackupHandler::addQueue(Restore::class, ['backupFile' => $backupFile]));
 		}
 
 		return $this->response->setJsonContent(false);
