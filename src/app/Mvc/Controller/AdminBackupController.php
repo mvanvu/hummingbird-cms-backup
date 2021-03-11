@@ -18,14 +18,20 @@ class AdminBackupController extends ControllerBase
 
 	public function backupAction()
 	{
-		return $this->response->setJsonContent(BackupHandler::addQueue(Backup::class));
+		BackupHandler::addQueue(Backup::class);
+		sleep(1);
+
+		return $this->response->setJsonContent(true);
 	}
 
 	public function restoreAction()
 	{
 		if ($this->request->isPost() && $backupFile = $this->request->getPost('backupFile'))
 		{
-			return $this->response->setJsonContent(BackupHandler::addQueue(Restore::class, ['backupFile' => $backupFile]));
+			BackupHandler::addQueue(Restore::class, ['backupFile' => $backupFile]);
+			sleep(1);
+
+			return $this->response->setJsonContent(true);
 		}
 
 		return $this->response->setJsonContent(false);

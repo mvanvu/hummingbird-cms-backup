@@ -28,8 +28,8 @@ class Backup extends Plugin
 		}
 	}
 
-	public function onFly(FlyApplication $app)
+	public function onSky(FlyApplication $app)
 	{
-		Queue::execute(BackupQueue::class, ['fromPlugin' => 'Cms/Backup']);
+		Queue::execute(BackupQueue::class);
 	}
 }
