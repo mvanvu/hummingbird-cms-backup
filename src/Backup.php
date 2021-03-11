@@ -2,6 +2,7 @@
 
 namespace App\Plugin\Cms;
 
+use App\Console\Fly\Schedule;
 use App\Factory\FlyApplication;
 use App\Helper\AdminMenu;
 use App\Helper\IconSvg;
@@ -11,6 +12,7 @@ use App\Helper\Uri;
 use App\Helper\User;
 use App\Plugin\Plugin;
 use App\Queue\Backup as BackupQueue;
+use App\Console\Fly\Plugin as FlyPlugin;
 
 class Backup extends Plugin
 {
@@ -28,7 +30,7 @@ class Backup extends Plugin
 		}
 	}
 
-	public function onSky(FlyApplication $app)
+	public function onSky(FlyApplication $app, FlyPlugin $fly)
 	{
 		Queue::execute(BackupQueue::class);
 	}
