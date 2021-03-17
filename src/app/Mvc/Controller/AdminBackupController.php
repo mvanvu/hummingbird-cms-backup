@@ -86,4 +86,11 @@ class AdminBackupController extends ControllerBase
 			]
 		);
 	}
+
+	public function downloadAction()
+	{
+		$file = PLUGIN_PATH . '/Cms/Backup/archived/' . $this->request->get('file');
+
+		FileSystem::stream($file);
+	}
 }
