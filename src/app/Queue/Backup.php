@@ -53,7 +53,14 @@ class Backup extends QueueAbstract
 
 						foreach ($item as $value)
 						{
-							$values .= $db->escapeString((string) $value) . ',';
+							if (is_null($value))
+							{
+								$values .= 'NULL,';
+							}
+							else
+							{
+								$values .= $db->escapeString((string) $value) . ',';
+							}
 						}
 
 						$insertSql .= rtrim($values, ',') . '),';
